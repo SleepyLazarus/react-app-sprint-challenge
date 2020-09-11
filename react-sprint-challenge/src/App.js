@@ -7,23 +7,22 @@ import Movies from './Movies';
 
 function App() {
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios.get('https://swapi.py4e.com/api/films')
     .then((response => {
-      setData(response.data);
+      setData(response.data.results);
     }))
     .catch(( err => {
 
     }))
   }, []);
 
-  console.log(data);
 
   return (
     <div>
-      <Movies data={data.results}/>
+      <Movies data={data}/>
     </div>
   );
 }
